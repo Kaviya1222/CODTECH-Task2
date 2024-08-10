@@ -1,0 +1,72 @@
+from tkinter import *
+
+st = ""
+root = Tk()
+
+def press(n):
+    global st
+    if n == "c":
+        txtexp.delete(0, END)
+    elif n == "=":
+        try:
+            txtexp.delete(0, END)
+            txtexp.insert(0, eval(st))
+        except:
+            txtexp.insert(0, "Error")
+    else:
+        st = txtexp.get()
+        st = st + str(n)
+        txtexp.delete(0, END)
+        txtexp.insert(0, st)
+
+root.title("My Calculator")
+
+# Entry for the display
+txtexp = Entry(root, font=("Arial", 20))
+txtexp.grid(row=1, columnspan=4)
+
+# Button font settings
+button_font = ("Arial", 16)
+
+# Row 1
+btn0 = Button(root, text="0", command=lambda: press(0), height=5, width=11, font=button_font)
+btn0.grid(row=2, column=0)
+btn1 = Button(root, text="1", command=lambda: press(1), height=5, width=11, font=button_font)
+btn1.grid(row=2, column=1)
+btn2 = Button(root, text="2", command=lambda: press(2), height=5, width=11, font=button_font)
+btn2.grid(row=2, column=2)
+btnplus = Button(root, text="+", command=lambda: press("+"), height=5, width=11, font=button_font)
+btnplus.grid(row=2, column=3)
+
+# Row 2
+btn3 = Button(root, text="3", command=lambda: press(3), height=5, width=11, font=button_font)
+btn3.grid(row=3, column=0)
+btn4 = Button(root, text="4", command=lambda: press(4), height=5, width=11, font=button_font)
+btn4.grid(row=3, column=1)
+btn5 = Button(root, text="5", command=lambda: press(5), height=5, width=11, font=button_font)
+btn5.grid(row=3, column=2)
+btnminus = Button(root, text="-", command=lambda: press("-"), height=5, width=11, font=button_font)
+btnminus.grid(row=3, column=3)
+
+# Row 3
+btn6 = Button(root, text="6", command=lambda: press(6), height=5, width=11, font=button_font)
+btn6.grid(row=4, column=0)
+btn7 = Button(root, text="7", command=lambda: press(7), height=5, width=11, font=button_font)
+btn7.grid(row=4, column=1)
+btn8 = Button(root, text="8", command=lambda: press(8), height=5, width=11, font=button_font)
+btn8.grid(row=4, column=2)
+btnmul = Button(root, text="*", command=lambda: press("*"), height=5, width=11, font=button_font)
+btnmul.grid(row=4, column=3)
+
+# Row 4
+btn9 = Button(root, text="9", command=lambda: press(9), height=5, width=11, font=button_font)
+btn9.grid(row=5, column=0)
+btndiv = Button(root, text="/", command=lambda: press("/"), height=5, width=11, font=button_font)
+btndiv.grid(row=5, column=1)
+btneql = Button(root, text="=", command=lambda: press("="), height=5, width=11, font=button_font)
+btneql.grid(row=5, column=2)
+btnc = Button(root, text="c", command=lambda: press("c"), height=5, width=11, font=button_font)
+btnc.grid(row=5, column=3)
+
+root.mainloop()
+
